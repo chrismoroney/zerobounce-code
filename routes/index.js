@@ -69,6 +69,7 @@ async function validate_batch_mail(data_to_send) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  fs.truncate(results_file);
   res.sendFile('index.html', {root: 'views'});
 });
 
