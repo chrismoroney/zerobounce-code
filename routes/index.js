@@ -92,6 +92,7 @@ async function validate_batch_email(data_to_send) {
 
 // Get request for app.
 router.get('/', function(req, res, next) {
+  // Clear results file when loading page
   fs.truncate(results_file);
   res.sendFile('index.html', {root: 'views'});
 });
