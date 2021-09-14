@@ -8,4 +8,4 @@ To run this app, clone this repository, then in your command line / terminal, ch
 
 My code can be found in the ```routes/index.js``` and ```views/index.html``` folder. If you use this code, PLEASE update the ```api_key``` in ```routes/index.js```.
 
-In order to use properly, you must upload a CSV file with columns ```Email (required)``` and ```IP address (can be 'null')``` A sample email list to be uploaded can be found in ```public/emails.csv```.
+In order to use properly, you must upload a CSV file with columns ```Email (required)``` and ```IP address (can be 'null')``` A sample email list to be uploaded can be found in ```public/emails.csv```. The sample email csv contains a list of emails that won't charge your account on ZeroBounce.
