@@ -1,17 +1,13 @@
-var express = require('express');    //Express Web Server 
+var express = require('express');  //Express Web Server 
 var router = express.Router();
 
 var busboy = require('connect-busboy'); //middleware for form/file upload
-var path = require('path');     //used for file path
-var fs = require('fs-extra');       //File System - for file manipulation
+var fs = require('fs-extra'); //File System - for file manipulation
 var csv = require("csv-parser");
-var request = require('request');
 var axios = require('axios');
 var converter = require('json-2-csv');
 
-
 router.use(busboy());
-router.use(express.static(path.join(__dirname, 'public')));
 
 var results_file = "public/listOfEmails.csv"
 
@@ -30,7 +26,7 @@ router.post('/', function(req, res, next) {
           console.log("Processing CSV");             
           fs.truncate(results_file);
           var data_to_send = {
-            api_key: "5ccba0ad00ff421c88c5f948908467bd",
+            api_key: "5ccba0ad00ff421c88c5f948908467bd", // CHANGE YOUR API KEY HERE
             email_batch: []
           }
           fs.createReadStream(filepath)
@@ -45,6 +41,7 @@ router.post('/', function(req, res, next) {
           })
           .on('end',function(){
               validate_batch_mail(data_to_send)
+              res.status(204).send();
           });  
       });
       
@@ -61,6 +58,7 @@ async function validate_batch_mail(data_to_send) {
         }
         fs.writeFileSync(results_file, csv);
       });
+      
     })
     .catch(error => {
       console.error(error)

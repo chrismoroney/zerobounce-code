@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <title>Upload CSV</title>
 </head>
-
+<!-- Simple HTML page to initiate POST request to the same router-->
 <body>
+    <h1>Email Verification with ZeroBounce</h1>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>Upload a CSV file with format { Email (required), IP Address (if null, enter 'null') }</li>
+        <li>While you see the loading circle in the browser, click the submit button to send your CSV to ZeroBounce API</li>
+        <ul>
+            <li>Don't be alarmed if you see the page still "loading". This is simply the routing in the browser expecting to be landed somewhere else, but instead stays on this apge. </li>
+        </ul>
+        <li>Click Download File to view the results from ZeroBounce.</li>
+        <li>To use again, simply reload the page and submit another csv. </li>
+    </ol>
     <form method='post' action='/' enctype="multipart/form-data">
-    <input type='file' name='fileUploaded'>
-    <input type='submit'>
-    <a href="listOfEmails.csv" download>Download File</a>
+        <input type='file' accept=".csv" name='fileUploaded'>
+        <input type='submit'>
+        <a href="listOfEmails.csv" download>Download File</a>
+    </form>
 </body>
 </html>
